@@ -1,0 +1,95 @@
+
+[1] explain (en)
+------------------------------------------------------------
+**What this code does**
+
+1. `def average(nums)` defines a function that takes a list of numbers.
+2. `sum(nums)` adds them and `len(nums)` counts them.
+3. It returns the total divided by the count, i.e. the mean.
+
+**Watch out:** an empty list makes `len(nums)` zero, so Python raises `ZeroDivisionError`.
+
+[2] explain (hi)
+------------------------------------------------------------
+**यह कोड क्या करता है**
+
+1. `def average(nums)` एक function बनाता है जो numbers की list लेता है।
+2. `sum(nums)` सबको जोड़ता है और `len(nums)` गिनती करता है।
+3. यह total को count से divide करके average लौटाता है।
+
+**ध्यान दें:** खाली list पर `ZeroDivisionError` आएगा।
+
+[3] fix (en)
+------------------------------------------------------------
+**Why it fails:** `average([])` divides by `len([])`, which is 0, so Python raises `ZeroDivisionError` on line 2.
+
+**Fixed code:**
+
+```python
+def average(nums):
+    if not nums:
+        return 0.0
+    return sum(nums) / len(nums)
+```
+
+**Tip:** always decide what an empty input should return.
+  check block 1 (python): syntax OK
+
+[4] docstring (en)
+------------------------------------------------------------
+```python
+def average(nums):
+    """Return the arithmetic mean of a list of numbers.
+
+    Args:
+        nums: A non-empty list of int or float values.
+
+    Returns:
+        float: The average value.
+
+    Raises:
+        ZeroDivisionError: If ``nums`` is empty.
+    """
+    return sum(nums) / len(nums)
+```
+  check block 1 (python): syntax OK
+
+[5] tests (en)
+------------------------------------------------------------
+```python
+import pytest
+from average import average
+
+
+def test_average_of_integers():
+    assert average([2, 4, 6]) == 4
+
+
+def test_average_of_floats():
+    assert average([1.5, 2.5]) == pytest.approx(2.0)
+
+
+def test_empty_list_raises():
+    with pytest.raises(ZeroDivisionError):
+        average([])
+```
+  check block 1 (python): syntax OK
+
+[6] generate (en)
+------------------------------------------------------------
+Here is a simple, commented solution:
+
+```python
+def is_palindrome(text: str) -> bool:
+    """Return True if text reads the same forwards and backwards."""
+    cleaned = "".join(ch.lower() for ch in text if ch.isalnum())
+    return cleaned == cleaned[::-1]
+
+
+print(is_palindrome("Nitin"))  # True
+```
+
+It ignores spaces, punctuation and capital letters.
+  check block 1 (python): syntax OK
+
+history: 6 sessions, 12 messages saved locally (temporary demo file)

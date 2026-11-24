@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "average.py", line 5, in <module>
+    print(average([]))
+  File "average.py", line 2, in average
+    return sum(nums) / len(nums)
+ZeroDivisionError: division by zero

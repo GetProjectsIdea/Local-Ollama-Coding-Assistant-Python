@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "local-ollama-coding-assistant"
+version = "1.0.0"
+description = "Local AI coding assistant for students: explain code, generate code, fix errors, write docstrings and tests with Ollama + open-weight models (Gemma 4, Qwen2.5-Coder, Flint). Offline, Flask UI, streaming, local history, Hindi/Hinglish."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Pardeep Patel" }]
+requires-python = ">=3.10"
+dependencies = ["Flask>=3.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+local-coder = "local_coder.cli:main"
+
+[project.urls]
+Homepage = "https://getprojects.org/local-ai-coding-assistant-ollama-python/"
+Source = "https://github.com/GetProjectsIdea/Local-Ollama-Coding-Assistant-Python"
+
+[tool.setuptools]
+packages = ["local_coder"]
+
+[tool.setuptools.package-data]
+local_coder = ["templates/*.html", "static/*.css", "static/*.js"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

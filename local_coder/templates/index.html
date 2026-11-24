@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Local Coder · offline AI coding assistant</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="logo">&lt;/&gt;</span> Local Coder <small>v{{ version }}</small></div>
+  <div class="controls">
+    <label>Model <select id="model"><option value="{{ settings.model }}">{{ settings.model }}</option></select></label>
+    <label>Explain in <select id="language">
+      {% for l in languages %}<option value="{{ l }}" {% if l == settings.language %}selected{% endif %}>{{ {'en':'English','hi':'हिंदी (Hindi)','hinglish':'Hinglish'}[l] }}</option>{% endfor %}
+    </select></label>
+    <label>Level <select id="level">
+      {% for l in levels %}<option value="{{ l }}" {% if l == settings.level %}selected{% endif %}>{{ l|capitalize }}</option>{% endfor %}
+    </select></label>
+    <span id="status" class="pill">checking Ollama…</span>
+  </div>
+</header>
+<div class="layout">
+  <aside class="history">
+    <button id="newchat" class="btn wide">+ New chat</button>
+    <input id="search" type="search" placeholder="Search saved chats">
+    <ul id="sessions"></ul>
+    <div class="hw" id="hw"></div>
+  </aside>
+  <main>
+    <nav class="modes" id="modes">
+      {% for key, label in modes.items() %}<button data-mode="{{ key }}" class="mode{% if key == 'explain' %} active{% endif %}">{{ label }}</button>{% endfor %}
+    </nav>
+    <section id="thread" class="thread">
+      <div class="welcome" id="welcome">
+        <h2>Your offline coding tutor</h2>
+        <p>Paste code, pick a task and press <b>Ask</b>. Everything runs on this laptop through Ollama — no internet, no API bill. Chats are saved in <code>{{ settings.db_path }}</code>.</p>
+      </div>
+    </section>
+    <form id="form" class="composer" autocomplete="off">
+      <div class="row">
+        <input id="filename" placeholder="file name (optional, e.g. average.py)">
+        <span class="hint" id="modehint"></span>
+      </div>
+      <textarea id="code" rows="8" spellcheck="false" placeholder="Paste your code here"></textarea>
+      <textarea id="error" rows="4" spellcheck="false" placeholder="Paste the full error / traceback here" class="hidden"></textarea>
+      <div class="row">
+        <input id="question" placeholder="Ask a question (optional for explain / fix / tests)">
+        <button type="submit" class="btn" id="send">Ask ▶</button>
+        <button type="button" class="btn ghost hidden" id="stop">Stop</button>
+      </div>
+    </form>
+  </main>
+</div>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+▶ Generate code · model qwen2.5-coder:3b · ollama · lang en
+Certainly! Below is a Python function `is_palindrome` that checks if a given text is a palindrome, ignoring spaces and case. I've included comments to explain each part of the code, and I'll also provide an example to demonstrate how it works.
+
+```python
+def is_palindrome(text):
+    # Remove spaces and convert to lowercase
+    cleaned_text = text.replace(" ", "").lower()
+    
+    # Check if the cleaned text is equal to its reverse
+    return cleaned_text == cleaned_text[::-1]
+
+# Example usage
+example_text = "A man a plan a canal Panama"
+print(is_palindrome(example_text))  # Output: True
+```
+
+### Explanation:
+
+1. **Cleaning the Text**: 
+   - The function first removes all spaces from the input text using `text.replace(" ", "")`.
+   - It then converts the text to lowercase using `text.lower()`. This ensures that the palindrome check is case-insensitive.
+
+2. **Checking for Palindrome**:
+   - The function checks if the cleaned text is equal to its reverse. This is done using slicing `cleaned_text[::-1]`, which creates a reversed version of the string.
+   - If the cleaned text is the same as its reverse, the function returns `True`, indicating that the text is a palindrome.
+
+3. **Example**:
+   - The example provided checks the string "A man a plan a canal Panama". After cleaning, it becomes "amanaplanacanalpanama".
+   - Since this string reads the same forwards and backwards, the function returns `True`, confirming that it is a palindrome.
+
+This function is simple and uses basic string operations available in Python's standard library, making it suitable for a beginner to understand.
+  [354 tokens · 17.7 tokens/s · 21.44 s]
+  ✓ code block 1 (python): syntax OK
+  saved to history as session #6

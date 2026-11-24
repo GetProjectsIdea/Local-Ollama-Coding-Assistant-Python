@@ -1,0 +1,70 @@
+▶ Write unit tests · model qwen2.5-coder:3b · ollama · lang en
+Sure! Let's write unit tests for the `average` function using pytest. We'll cover normal cases, edge cases, and expected errors.
+
+```python
+import pytest
+
+def average(nums):
+    return sum(nums) / len(nums)
+
+# Test cases
+
+# Normal case: list with multiple numbers
+def test_average_multiple_numbers():
+    assert average([1, 2, 3, 4, 5]) == 3.0
+
+# Edge case: empty list
+def test_average_empty_list():
+    with pytest.raises(ZeroDivisionError):
+        average([])
+
+# Edge case: single number
+def test_average_single_number():
+    assert average([10]) == 10.0
+
+# Edge case: zero
+def test_average_zero():
+    assert average([0, 0, 0]) == 0.0
+
+# Edge case: negative numbers
+def test_average_negative_numbers():
+    assert average([-1, -2, -3]) == -2.0
+
+# Edge case: large numbers
+def test_average_large_numbers():
+    assert average([1000000, 2000000, 3000000]) == 2000000.0
+
+# Edge case: mixed positive and negative numbers
+def test_average_mixed_numbers():
+    assert average([1, -2, 3, -4, 5]) == 1.0
+
+# Edge case: zero and negative numbers
+def test_average_zero_negative_numbers():
+    assert average([0, -1, 0, -2]) == -1.0
+
+# Edge case: zero and positive numbers
+def test_average_zero_positive_numbers():
+    assert average([0, 1, 0, 2]) == 1.0
+
+# Edge case: large positive and negative numbers
+def test_average_large_mixed_numbers():
+    assert average([1000000, -2000000, 3000000]) == 1000000.0
+```
+
+### Explanation:
+
+1. **Normal case**: We test the function with a list of multiple numbers to ensure it calculates the average correctly.
+2. **Empty list**: We test the function with an empty list to ensure it raises a `ZeroDivisionError` when trying to divide by zero.
+3. **Single number**: We test the function with a single number to ensure it returns the number itself.
+4. **Zero**: We test the function with a list of zeros to ensure it returns zero.
+5. **Negative numbers**: We test the function with a list of negative numbers to ensure it calculates the average correctly.
+6. **Large numbers**: We test the function with a list of large numbers to ensure it handles large numbers correctly.
+7. **Mixed positive and negative numbers**: We test the function with a list of mixed positive and negative numbers to ensure it calculates the average correctly.
+8. **Zero and negative numbers**: We test the function with a list containing both zero and negative numbers to ensure it handles them correctly.
+9. **Zero and positive numbers**: We test the function with a list containing both zero and positive numbers to ensure it handles them correctly.
+10. **Large positive and negative numbers**: We test the function with a list containing both large positive and negative numbers to ensure it handles them correctly.
+
+These tests cover a variety of scenarios to ensure the function behaves as expected.
+  [717 tokens · 17.1 tokens/s · 50.95 s · model load 8.36 s]
+  ✓ code block 1 (python): syntax OK
+  saved to history as session #4

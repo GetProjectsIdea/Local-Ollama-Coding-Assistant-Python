@@ -1,0 +1,26 @@
+▶ Fix an error · model gemma4-e2b-q4km · ollama · lang en
+  detected ZeroDivisionError at line 2
+WHY it happens: The error happens because when you call `average([])`, the list `nums` is empty, so `len(nums)` is 0, and you cannot divide by zero.
+
+Here is the corrected code:
+
+```python
+def average(nums):
+    if not nums:
+        return 0  # Or you can return None, depending on what you want to do for an empty list
+    return sum(nums) / len(nums)
+
+
+print(average([]))
+```
+
+Tip to avoid this mistake next time: Always check if the list is empty (if it's empty, `len(nums)` will be 0) before you try to divide by it.
+
+**Explanation:**
+
+1.  **Check for Empty List:** We added an `if not nums:` line. This checks if the list `nums` is empty.
+2.  **Handle the Error:** If the list is empty, we immediately `return 0`. This prevents the division by zero error. (You could also return `None` or raise a specific error, but returning 0 is a simple fix here.)
+3.  **Calculate Average:** If the list is *not* empty, the code proceeds to calculate the average as before: `sum(nums) / len(nums)`.
+  [275 tokens · 19.3 tokens/s · 14.46 s · model load 0.01 s]
+  ✓ code block 1 (python): syntax OK
+  saved to history as session #2

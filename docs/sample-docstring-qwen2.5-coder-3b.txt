@@ -1,0 +1,40 @@
+▶ Write docstrings / comments · model qwen2.5-coder:3b · ollama · lang en
+```python
+def average(nums):
+    """
+    Calculate the average of a list of numbers.
+
+    Args:
+    nums (list): A list of numbers.
+
+    Returns:
+    float: The average of the numbers in the list.
+    """
+    # Check if the list is empty to avoid division by zero
+    if not nums:
+        return 0.0
+
+    # Calculate the sum of all numbers in the list
+    total_sum = sum(nums)
+
+    # Calculate the number of elements in the list
+    count = len(nums)
+
+    # Return the average by dividing the total sum by the count
+    return total_sum / count
+
+# Example usage
+print(average([]))  # Output: 0.0
+```
+
+### Explanation:
+- **Function Definition**: The `average` function takes a list of numbers as input.
+- **Docstring**: The docstring explains the purpose of the function, its arguments, and its return value.
+- **Empty List Check**: Before calculating the average, the function checks if the list is empty to avoid division by zero.
+- **Sum Calculation**: The `sum` function is used to calculate the total sum of the numbers in the list.
+- **Count Calculation**: The `len` function is used to determine the number of elements in the list.
+- **Average Calculation**: The average is calculated by dividing the total sum by the count of numbers.
+- **Example Usage**: The example demonstrates how to call the `average` function with an empty list, which returns `0.0`.
+  [316 tokens · 17.2 tokens/s · 18.93 s]
+  ✓ code block 1 (python): syntax OK
+  saved to history as session #7

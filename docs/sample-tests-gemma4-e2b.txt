@@ -1,0 +1,49 @@
+▶ Write unit tests · model gemma4-e2b-q4km · ollama · lang en
+Here are the unit tests for your `average` function using `pytest`.
+
+```python
+import pytest
+from average import average
+
+def test_normal_case():
+    # Test with a normal list of numbers
+    assert average([1, 2, 3, 4, 5]) == 3.0
+
+def test_empty_list():
+    # Test the edge case where the input list is empty
+    # This will cause a ZeroDivisionError, which we expect to be raised.
+    with pytest.raises(ZeroDivisionError):
+        average([])
+
+def test_list_with_zero():
+    # Test a list that includes zero
+    assert average([0, 0, 10]) == 3.3333333333333335 # Check for floating point comparison
+
+def test_list_with_negative_numbers():
+    # Test a list with negative numbers
+    assert average([-1, 0, 1]) == 0.0
+
+def test_single_element():
+    # Test with a list containing only one number
+    assert average([10]) == 10.0
+
+def test_large_numbers():
+    # Test with larger numbers
+    assert average([1000, 2000]) == 1500.0
+```
+
+### Explanation of the Tests
+
+Here is what each test does:
+
+1.  **`test_normal_case()`**: This checks if the function works correctly with a standard list of numbers (like `[1, 2, 3, 4, 5]`). It makes sure the result is correct.
+2.  **`test_empty_list()`**: This is an **edge case**. If you try to divide by zero (which happens when the list is empty, because `len([])` is 0), the program will crash with a `ZeroDivisionError`. We use `pytest.raises(ZeroDivisionError)` to check if this specific error *does* happen, which is the correct behavior for this function.
+3.  **`test_list_with_zero()`**: This checks if the function handles lists that contain the number zero correctly.
+4.  **`test_list_with_negative_numbers()`**: This checks if the function works when the list contains negative numbers.
+5.  **`test_single_element()`**: This checks a simple case where the list only has one item.
+6.  **`test_large_numbers()`**: This checks if the function handles larger numbers without any problems.
+
+These tests cover the normal way the function should work and the tricky situations (like an empty list) where it might fail.
+  [585 tokens · 23.4 tokens/s · 25.68 s]
+  ✓ code block 1 (python): syntax OK
+  saved to history as session #5
